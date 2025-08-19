@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
-import TrackingBody from "./Tracking"; 
 import "./layout.css";
-import "@fontsource/montserrat"
+import "@fontsource/montserrat";
+import { Outlet } from "react-router-dom";
 
-const Layout = ({ children }) => {
+const Layout = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
       <div className="main">
         <Header />
         <div className="content">
-          {children ?? <TrackingBody />} {/* ✅ Show TrackingBody if no children */}
+          <Outlet /> {/* This is where page content will render */}
         </div>
       </div>
     </div>

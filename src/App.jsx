@@ -1,11 +1,24 @@
 import React from "react";
-import Layout from "e:/REact/gulfcargoadmin/src/components/layout";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import Dashboard from "./pages/Dashboard";
+import StaffPanel from "./pages/StaffPanel"; // Import staff page
 
 function App() {
   return (
-    <Layout>
-      {/* You can put your routed page components here */}
-    </Layout>
+    <BrowserRouter>
+      <Routes>
+        {/* Dashboard with Layout */}
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />} />
+        <Route path="/staffpanel" element={<StaffPanel />} />
+
+        </Route>
+
+        {/* Staff Panel outside Layout */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 

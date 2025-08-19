@@ -19,7 +19,7 @@ export default function Header() {
 
   return (
     <header className="header">
-      <span>Dashboard</span>
+      <span>Welcome Back User</span>
       <div style={{ position: "relative" }}>
         <div className="acount-avatar" style={{ cursor: "pointer" }}
           onClick={() => setShowSettings(s => !s)}>

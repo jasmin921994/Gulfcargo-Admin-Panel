@@ -9,7 +9,9 @@ import {
   FaChartBar,
   FaCog
 } from "react-icons/fa";
-import { MdArrowForwardIos } from "react-icons/md";
+import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
+import { BiSolidDashboard } from "react-icons/bi";
+import { Link } from "react-router-dom";   // ⬅️ import Link
 import "./layout.css";
 
 export default function Sidebar({ collapsed, setCollapsed }) {
@@ -21,20 +23,30 @@ export default function Sidebar({ collapsed, setCollapsed }) {
 
   const menuItems = [
     {
+      key: "dashboard",
+      icon: <BiSolidDashboard />,
+      label: "Dashboard",
+      path: "/dashboard",  // ⬅️ add path
+    },
+    {
       key: "branch",
       icon: <FaBuilding />,
       label: "Branch Management",
-      submenus: ["All Branches", "Add New Branch", "Branch Performance Report"]
+      submenus: [
+        { label: "All Branches", path: "/branches" },
+        { label: "Add New Branch", path: "/branches/new" },
+        { label: "Branch Performance Report", path: "/branches/report" }
+      ]
     },
     {
       key: "hr",
       icon: <FaUsers />,
       label: "HR & Staff",
       submenus: [
-        "Staff List",
-        "Attendance & Leave",
-        "Payroll & Salaries",
-        "Performance Review"
+        { label: "Staff List", path: "/StaffPanel" }, // ⬅️ Staff Panel route
+        { label: "Attendance & Leave", path: "/attendance" },
+        { label: "Payroll & Salaries", path: "/payroll" },
+        { label: "Performance Review", path: "/performance" }
       ]
     },
     {
@@ -42,10 +54,10 @@ export default function Sidebar({ collapsed, setCollapsed }) {
       icon: <FaTruck />,
       label: "Fleet & Drivers",
       submenus: [
-        "Driver List",
-        "Assign Driver to Shipment",
-        "Vehicle Management",
-        "Maintenance Schedule"
+        { label: "Driver List", path: "/drivers" },
+        { label: "Assign Driver to Shipment", path: "/drivers/assign" },
+        { label: "Vehicle Management", path: "/vehicles" },
+        { label: "Maintenance Schedule", path: "/maintenance" }
       ]
     },
     {
@@ -53,10 +65,10 @@ export default function Sidebar({ collapsed, setCollapsed }) {
       icon: <FaBox />,
       label: "Shipments",
       submenus: [
-        "Create Shipment",
-        "All Shipments",
-        "Pending / In Transit / Delivered",
-        "Shipment Tracking"
+        { label: "Create Shipment", path: "/shipments/new" },
+        { label: "All Shipments", path: "/shipments" },
+        { label: "Pending / In Transit / Delivered", path: "/shipments/status" },
+        { label: "Shipment Tracking", path: "/shipments/tracking" }
       ]
     },
     {
@@ -64,9 +76,9 @@ export default function Sidebar({ collapsed, setCollapsed }) {
       icon: <FaUser />,
       label: "Agency & Partners",
       submenus: [
-        "Partner Agencies",
-        "Contracts & Agreements",
-        "Agency Performance"
+        { label: "Partner Agencies", path: "/agencies" },
+        { label: "Contracts & Agreements", path: "/agencies/contracts" },
+        { label: "Agency Performance", path: "/agencies/performance" }
       ]
     },
     {
@@ -74,9 +86,9 @@ export default function Sidebar({ collapsed, setCollapsed }) {
       icon: <FaUser />,
       label: "Sender / Receiver",
       submenus: [
-        "Customer Database",
-        "KYC & Verification",
-        "Customer History"
+        { label: "Customer Database", path: "/customers" },
+        { label: "KYC & Verification", path: "/customers/kyc" },
+        { label: "Customer History", path: "/customers/history" }
       ]
     },
     {
@@ -84,10 +96,10 @@ export default function Sidebar({ collapsed, setCollapsed }) {
       icon: <FaMoneyBill />,
       label: "Finance & Accounts",
       submenus: [
-        "Invoices & Payments",
-        "Expenses & Purchase Orders",
-        "Outstanding Payments",
-        "Financial Reports"
+        { label: "Invoices & Payments", path: "/finance/invoices" },
+        { label: "Expenses & Purchase Orders", path: "/finance/expenses" },
+        { label: "Outstanding Payments", path: "/finance/outstanding" },
+        { label: "Financial Reports", path: "/finance/reports" }
       ]
     },
     {
@@ -95,10 +107,10 @@ export default function Sidebar({ collapsed, setCollapsed }) {
       icon: <FaChartBar />,
       label: "Reports & Analytics",
       submenus: [
-        "Shipment Reports",
-        "Revenue & Expense Reports",
-        "Delivery Performance",
-        "Branch-wise Analysis"
+        { label: "Shipment Reports", path: "/reports/shipments" },
+        { label: "Revenue & Expense Reports", path: "/reports/revenue" },
+        { label: "Delivery Performance", path: "/reports/performance" },
+        { label: "Branch-wise Analysis", path: "/reports/branch" }
       ]
     },
     {
@@ -106,10 +118,10 @@ export default function Sidebar({ collapsed, setCollapsed }) {
       icon: <FaCog />,
       label: "System Settings",
       submenus: [
-        "User Roles & Permissions",
-        "API Integrations",
-        "System Preferences",
-        "Notification Settings"
+        { label: "User Roles & Permissions", path: "/settings/roles" },
+        { label: "API Integrations", path: "/settings/api" },
+        { label: "System Preferences", path: "/settings/preferences" },
+        { label: "Notification Settings", path: "/settings/notifications" }
       ]
     }
   ];
@@ -120,9 +132,14 @@ export default function Sidebar({ collapsed, setCollapsed }) {
       <div
         className="logo-section"
         onClick={() => {
-          if (collapsed) setCollapsed(false); // expand when logo clicked in collapsed mode
+          if (collapsed) setCollapsed(false);
         }}
-        style={{ cursor: collapsed ? "pointer" : "default" }}
+        style={{
+          cursor: collapsed ? "pointer" : "default",
+          display: "flex",
+          alignItems: "center",
+          padding: "16px"
+        }}
       >
         <img
           src={collapsed ? "/Logo-collapse.png" : "/Logo.png"}
@@ -134,34 +151,54 @@ export default function Sidebar({ collapsed, setCollapsed }) {
           }}
         />
 
-        {/* Arrow icon only in expanded mode */}
         {!collapsed && (
           <button
             className="toggle-btn"
             onClick={() => setCollapsed(true)}
             aria-label="Collapse menu"
+            style={{
+              marginLeft: "auto",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center"
+            }}
           >
-            <MdArrowForwardIos />
+            <MdKeyboardDoubleArrowLeft />
           </button>
         )}
       </div>
 
       {/* Menu List */}
-      <ul className="menu-list">
-        {menuItems.map(({ key, icon, label, submenus }) => (
-          <li key={key}>
+      <ul className="menu-list" style={{ padding: 0, margin: 0 }}>
+        {menuItems.map(({ key, icon, label, path, submenus }) => (
+          <li key={key} style={{ listStyle: "none" }}>
             <div
               className="menu-header"
-              onClick={() => toggleMenu(key)}
-              style={{ cursor: "pointer" }}
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") toggleMenu(key);
+              onClick={() => submenus && toggleMenu(key)}
+              style={{
+                cursor: submenus ? "pointer" : "default",
+                display: "flex",
+                alignItems: "center",
+                padding: "12px 20px"
               }}
             >
-              <span className="menu-icon">{icon}</span>
-              {!collapsed && <span>{label}</span>}
+              <span className="menu-icon" style={{ minWidth: 24 }}>
+                {icon}
+              </span>
+
               {!collapsed && (
+                path ? (
+                  <Link to={path} style={{ flex: 1, marginLeft: "14px", textDecoration: "none", color: "inherit" }}>
+                    {label}
+                  </Link>
+                ) : (
+                  <span style={{ flex: 1, marginLeft: "14px" }}>{label}</span>
+                )
+              )}
+
+              {!collapsed && submenus && (
                 <span style={{ marginLeft: "auto" }}>
                   {openMenu === key ? "▲" : "▼"}
                 </span>
@@ -169,11 +206,17 @@ export default function Sidebar({ collapsed, setCollapsed }) {
             </div>
 
             {/* Submenu */}
-            {openMenu === key && !collapsed && (
-              <ul className="submenu">
+            {submenus && openMenu === key && !collapsed && (
+              <ul className="submenu" style={{ paddingLeft: 48 }}>
                 {submenus.map((submenu) => (
-                  <li key={submenu} className="submenu-item">
-                    {submenu}
+                  <li
+                    key={submenu.label}
+                    className="submenu-item"
+                    style={{ padding: "8px 0", fontSize: "14px" }}
+                  >
+                    <Link to={submenu.path} style={{ textDecoration: "none", color: "inherit" }}>
+                      {submenu.label}
+                    </Link>
                   </li>
                 ))}
               </ul>

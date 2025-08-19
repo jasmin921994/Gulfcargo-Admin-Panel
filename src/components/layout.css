@@ -48,7 +48,7 @@
 }
 
 .header {
-  height: 71px;
+  height: 75px;
   background: #fff;
   display: flex;
   align-items: center;
@@ -273,3 +273,49 @@
 .truck-img img {
   width: 100%;
 }
+.acount-avatar img {
+    border-radius: 50px;
+    max-width:40px !important;
+}
+
+.staff-panel {
+  padding: 20px;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.staff-panel h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+}
+
+.staff-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.staff-table th,
+.staff-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.staff-table th {
+  background: #007bff;
+  color: #fff;
+  font-weight: 600;
+}
+
+.staff-table tr:hover {
+  background: #f1f1f1;
+  transition: 0.3s;
+}
+/* StaffPanel.css */
+
