@@ -1,16 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FiMoreVertical } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 import "./Styles.css";
 
 const StaffPanel = () => {
   const [filter, setFilter] = useState({ name: "", email: "", status: "" });
-  const [staff, setStaff] = useState([
+  const [staff] = useState([
     { id: 1, name: "Haile", email: "haileclassice@gmail.com", password: "123456", role: "Super Admin", status: "Active" },
     { id: 2, name: "John", email: "john@example.com", password: "abcdef", role: "Admin", status: "Inactive" },
     { id: 3, name: "Sarah", email: "sarah@example.com", password: "pass@123", role: "Manager", status: "Active" },
   ]);
 
   const [dropdownId, setDropdownId] = useState(null);
+  const navigate = useNavigate();
+
+  // ✅ Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (!event.target.closest(".dropdown-wrapper")) {
+        setDropdownId(null);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   // Filter logic
   const filteredStaff = staff.filter((user) => {
@@ -28,6 +44,13 @@ const StaffPanel = () => {
   return (
     <div className="staff-panel">
       <h2>Staff Panel</h2>
+
+      {/* ✅ Create Button Section */}
+      <div className="create-section">
+        <button className="create-btn" onClick={() => navigate("/staffcreate")}>
+          + Create Staff
+        </button>
+      </div>
 
       {/* Filter Section */}
       <div className="filter-section">
@@ -91,6 +114,7 @@ const StaffPanel = () => {
                   />
                   {dropdownId === user.id && (
                     <div className="dropdown">
+                      <button onClick={() => navigate(`/staff/${user.id}`)}>View</button>
                       <button onClick={() => alert(`Editing ${user.name}`)}>Edit</button>
                       <button onClick={() => alert(`Deleting ${user.name}`)}>Delete</button>
                     </div>

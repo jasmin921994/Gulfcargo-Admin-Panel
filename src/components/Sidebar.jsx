@@ -44,9 +44,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
       label: "HR & Staff",
       submenus: [
         { label: "Staff List", path: "/StaffPanel" }, // ⬅️ Staff Panel route
-        { label: "Attendance & Leave", path: "/attendance" },
-        { label: "Payroll & Salaries", path: "/payroll" },
-        { label: "Performance Review", path: "/performance" }
+        { label: "Add New Staff", path: "/StaffCreate" },
       ]
     },
     {
