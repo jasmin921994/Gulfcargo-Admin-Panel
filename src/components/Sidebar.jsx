@@ -48,17 +48,6 @@ export default function Sidebar({ collapsed, setCollapsed }) {
       ]
     },
     {
-      key: "fleet",
-      icon: <FaTruck />,
-      label: "Fleet & Drivers",
-      submenus: [
-        { label: "Driver List", path: "/drivers" },
-        { label: "Assign Driver to Shipment", path: "/drivers/assign" },
-        { label: "Vehicle Management", path: "/vehicles" },
-        { label: "Maintenance Schedule", path: "/maintenance" }
-      ]
-    },
-    {
       key: "shipments",
       icon: <FaBox />,
       label: "Shipments",
@@ -84,9 +73,19 @@ export default function Sidebar({ collapsed, setCollapsed }) {
       icon: <FaUser />,
       label: "Sender / Receiver",
       submenus: [
-        { label: "Customer Database", path: "/customers" },
-        { label: "KYC & Verification", path: "/customers/kyc" },
-        { label: "Customer History", path: "/customers/history" }
+        { label: "Sender Details", path: "/SenderView" },
+        { label: "Add New Sender", path: "/SenderCreate" },
+        { label: "Receiver Details", path: "/ReceiverView" },
+        { label: "Add New Receiver", path: "/ReceiverCreate" }
+      ]
+    },
+        {
+      key: "visa",
+      icon: <FaTruck />,
+      label: "Visa Type",
+      submenus: [
+        { label: "Visa List", path: "/VisaTypeList" },
+        { label: "Add New Visa Type", path: "/VisaTypeCreate" }
       ]
     },
     {

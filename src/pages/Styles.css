@@ -279,3 +279,315 @@ input[type="file"] {
   transform: translateY(-2px);
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
+.customer-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.header-section h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.add-btn {
+  background: #28a745;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-btn:hover {
+  background: #218838;
+}
+
+.table-container {
+  background: #fff;
+  border-radius: 6px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.customer-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.customer-table th {
+  background: #f8f9fa;
+  padding: 10px;
+  border: 1px solid #dee2e6;
+  text-align: left;
+  font-weight: bold;
+}
+
+.customer-table td {
+  padding: 10px;
+  border: 1px solid #dee2e6;
+}
+
+.form-container {
+  max-width: 1100px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+}
+
+.new-sender-form h3 {
+  margin: 20px 0 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.new-sender-form .form-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.new-sender-form .form-row input,
+.new-sender-form .form-row select,
+.new-sender-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-success {
+  background: #28a745;
+  color: white;
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/*Visa*/
+.visa-page, .employee-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.add-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.add-btn:hover { background-color: #218838; }
+
+.table-container { overflow-x: auto; }
+
+.visa-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.visa-table th, .visa-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+.visa-table th { background-color: #f8f9fa; }
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: white;
+}
+.status-badge.active { background-color: #28a745; }
+.status-badge.inactive { background-color: #dc3545; }
+
+.action-buttons button {
+  margin-right: 5px;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-view { background-color: #17a2b8; color: white; }
+.btn-edit { background-color: #ffc107; color: black; }
+.btn-delete { background-color: #dc3545; color: white; }
+.btn-view:hover { background-color: #138496; }
+.btn-edit:hover { background-color: #e0a800; }
+.btn-delete:hover { background-color: #c82333; }
+
+.employee-list {
+  margin-top: 20px;
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+/* Visa Page Layout */
+.visa-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Header */
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header-section h2 {
+  margin: 0;
+  color: #333;
+}
+
+/* Form */
+.visa-form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  max-width: 1100px;
+}
+
+.visa-form .form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.visa-form .form-group label {
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #333;
+}
+
+.visa-form .form-group input,
+.visa-form .form-group select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Buttons */
+.visa-form .form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.visa-form .btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Dots button */
+.dots-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Dropdown container */
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  min-width: 120px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+.dropdown-menu button {
+  width: 100%;
+  padding: 8px 12px;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f0f0f0;
+}
+
